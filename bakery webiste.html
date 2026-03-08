@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Bread Bakery & Cafe</title>
+    <!-- Importing Google Fonts for a beautiful look -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #d35400; /* Burnt Orange */
+            --secondary-color: #f39c12; /* Golden Yellow */
+            --bg-color: #fdfbf7; /* Creamy White */
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: #5d4037; /* Dark Brown */
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #a04000;
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 4rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- BAKERY MENU GRID --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .menu-details {
+            padding: 15px;
+        }
+
+        .menu-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* --- CAKE SECTION --- */
+        .cake-section {
+            background-color: #fff8e1; /* Light yellow tint */
+        }
+
+        .cake-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .cake-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .cake-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .cake-price {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #3e2723;
+            color: #d7ccc8;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav ul { display: none; } /* Simplified for mobile */
+            section { padding: 3rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Hot Bread Bakery</a>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#bakery">Bakery Menu</a></li>
+                <li><a href="#cakes">Cakes</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Freshly Baked with Love</h1>
+        <p>Experience the warmth of artisan breads, delicate pastries, and custom cakes made fresh every morning.</p>
+        <a href="#bakery" class="btn">View Our Menu</a>
+    </section>
+
+    <!-- Bakery Items Section -->
+    <section id="bakery">
+        <h2 class="section-title">Our Bakery Favorites</h2>
+        <div class="menu-grid">
+            <!-- Item 1 -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1585476644321-b976214b606d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sourdough" class="menu-img">
+                <div class="menu-details">
+                    <h3>Artisan Sourdough</h3>
+                    <p>Crunchy crust, soft interior.</p>
+                    <span class="price">Rs80</span>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Croissant" class="menu-img">
+                <div class="menu-details">
+                    <h3>Butter Croissant</h3>
+                    <p>Flaky, golden, and buttery.</p>
+                    <span class="price"Rs100</span>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Baguette" class="menu-img">
+                <div class="menu-details">
+                    <h3>Classic Baguette</h3>
+                    <p>Perfect for sandwiches.</p>
+                    <span class="price">Rs150</span>
+                </div>
+            </div>
+            <!-- Item 4 -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Muffin" class="menu-img">
+                <div class="menu-details">
+                    <h3>Blueberry Muffin</h3>
+                    <p>Bursting with fresh berries.</p>
+                    <span class="price">Rs 60</span>
+                </div>
+            </div>
+            <!-- Item 5 -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1499636138143-bd649043ea52?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Cookies" class="menu-img">
+                <div class="menu-details">
+                    <h3>Choco-Chip Cookies</h3>
+                    <p>Soft and chewy (Dozen).</p>
+                    <span class="price">Rs60</span>
+                </div>
+            </div>
+            <!-- Item 6 -->
+            <div class="menu-item">
+                <img src="https://images.unsplash.com/photo-1579306194872-64d3b7bac4c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Danish" class="menu-img">
+                <div class="menu-details">
+                    <h3>Almond Danish</h3>
+                    <p>Sweet pastry with almond cream.</p>
+                    <span class="price">Rs70</span>
+                </div>
+            </div>
+            <!-- Item 7 -->
+            <div class="menu-item">
+                <img src="https://www.google.com/imgres?q=veg%20pizza%20cold%20bakery%20item%20pic%20with%20plastic%20cover&imgurl=https%3A%2F%2Fc8.alamy.com%2Fcomp%2F2TARMNM%2Fvegetarian-frozen-pizza-still-in-plastic-wrap-2TARMNM.jpg&imgrefurl=https%3A%2F%2Fwww.alamy.com%2Fstock-photo%2Ffrozen-pizza-in-plastic.html&docid=yVeOHLabWhKqwM&tbnid=337b3rCSaxXeJM&vet=12ahUKEwiE9r3t1I-TAxX5hGMGHfaABT8QnPAOegQIHxAB..i&w=1300&h=1130&hcb=2&ved=2ahUKEwiE9r3t1I-TAxX5hGMGHfaABT8QnPAOegQIHxAB"
+                <div class="menu-details">
+                    <h3>veg pizza</h3>
+                    <p>Crunchy crust, soft interior.</p>
+                    <span class="price">Rs90</span>
+                </div>
+        </div>
+    </section>
+
+    <!-- Cake Supply Section -->
+    <section id="cakes" class="cake-section">
+        <h2 class="section-title">Custom Cake Supply</h2>
+        <p style="text-align: center; margin-bottom: 30px;">Order our premium cakes for your special occasions.</p>
+        
+        <div class="cake-grid">
+            <div class="cake-card">
+                <span class="cake-icon">🍰</span>
+                <h3>white forest</h3>
+                <p>Light sponge with vanilla buttercream.</p>
+                <span class="cake-price">Rs750</span>
+            </div>
+            <div class="cake-card">
+                <span class="cake-icon">🍫</span>
+                <h3>black forest</h3>
+                <p>Double chocolate fudge cake.</p>
+                <span class="cake-price">Rs 750</span>
+            </div>
+            <div class="cake-card">
+                <span class="cake-icon">🍓</span>
+                <h3>Red truffle</h3>
+                <p>red texture with cream cheese frosting.</p>
+                <span class="cake-price">Rs800</span>
+            </div>
+            <div class="cake-card">
+                <span class="cake-icon">🍋</span>
+                <h3>white truffle</h3>
+                <p>Refreshing white sponge with glaze.</p>
+                <span class="cake-price">Rs800</span>
+            </div>
+            <div class="cake-card">
+                <span class="cake-icon">🫐</span>
+                <h3>Blueberry Bliss</h3>
+                <p>Blueberry swirl with vanilla custard.</p>
+                <span class="cake-price">Rs 800</span>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="btn" onclick="alert('Thank you! Please call us to finalize your cake order.')">Order a Cake</button>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact">
+        <h3>Hot Bread Bakery & Cafe</h3>
+        <p>balaju height micro station, boratar</p>
+        <p>Phone: (555) 123-4567</p>
+        <p>Email: hello@hotbreadbakery.com</p>
+        <br>
+        <p>&copy; 2023 Hot Bread Bakery. All rights reserved.</p>
+    </footer>
+
+    <!-- Simple Script for Smooth Scroll -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
